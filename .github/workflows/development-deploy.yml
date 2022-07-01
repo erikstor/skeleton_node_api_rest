@@ -1,0 +1,44 @@
+# This is a basic workflow to help you get started with Actions
+
+
+name: Backend desplegado en Development por cambios en facturación
+
+# Controls when the workflow will run
+on:
+  push:
+    # esta acción se ejecuta cuando se hace push o se acepta el pull request
+    branches: [ development ]
+  #pull_request_review:
+  #  branches: [ qa ]
+
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      #- uses: actions/checkout@v2
+      #- run: cd orders && yarn && yarn test
+      - name: deploy to qa configure keys
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.DEVELOPMENT_WIHOM }}
+          known_hosts: ${{ secrets.DEVELOPMENT_KNOWN_HOST }} # know host
+          if_key_exists: replace
+      - name: ssh to dev
+        run:  ssh  ${{ secrets.DEVELOPMENT_WIHOM_USER }}@${{ secrets.DEVELOPMENT_WIHOM_HOST }} ${{ secrets.DEVELOPMENT_BACKEND_SCRIPT }}
+      #- name: Slack Notification
+      #  uses: rtCamp/action-slack-notify@v2
+      #  env:
+      #    SLACK_WEBHOOK: ${{ secrets.SLACK_DEPLOY_WEBHOOK }}
+      #    MSG_MINIMAL: actions url
+      #    SLACK_USERNAME: Wihom_Deployments
+#ssh-keyscan -H IP_ADDRESS_OF_HOST // know host generate
+
+#https://hooks.slack.com/services/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
+
+

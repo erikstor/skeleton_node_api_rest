@@ -1,0 +1,62 @@
+{
+  "name": "billing-api",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.17.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.20.0",
+    "jest": "^27.5.1",
+    "jest-esm-transformer": "^1.0.0",
+    "keypair": "^1.0.4",
+    "nodemon": "^2.0.12"
+  },
+  "scripts": {
+    "dev": "nodemon  src/index.js",
+    "kill-process": "yarn exec fuser -k 5555/tcp",
+    "test": "jest --watch --no-cache",
+    "test:lite": "jest --watch --no-cache --maxWorkers=1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "description": "Billing api",
+  "version": "0.0.2",
+  "author": {
+    "name": "Cristian Guerrero",
+    "email": "guerrero.chavez.cristian@gmail.com"
+  },
+  "homepage": "https://app.wihom.com.co",
+  "dependencies": {
+    "aws-sdk": "^2.833.0",
+    "axios": "^0.21.1",
+    "bcrypt": "^5.0.0",
+    "bull": "^3.20.1",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.9.2",
+    "handlebars": "^4.7.6",
+    "helmet": "^4.4.1",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.32",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "nodemailer": "^6.6.3",
+    "numbro": "^2.3.5",
+    "pdfmake": "^0.2.2",
+    "pg": "^8.5.1",
+    "sequelize": "^6.5.0",
+    "uuidv4": "^6.2.11",
+    "validator": "^13.5.2",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.0",
+    "xlsx": "^0.17.0"
+  },
+  "type": "module"
+}
